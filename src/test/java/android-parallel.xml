@@ -5,7 +5,7 @@
     <test name="AndroidAppTest_1">
         <parameter name="version" value="11" />
         <parameter name="platform" value="Android" />
-        <parameter name="device" value="Galaxy Note20 Ultra 5G" />
+        <parameter name="device" value="Galaxy S21 5G" />
         <classes>
             <class name="AndroidApp" />
         </classes>
@@ -21,18 +21,18 @@
     </test>
 
         <test name="AndroidAppTest_3">
-        <parameter name="version" value="13" />
+        <parameter name="version" value="12" />
         <parameter name="platform" value="Android" />
-        <parameter name="device" value="Galaxy S21 Ultra 5G" />
+        <parameter name="device" value="Galaxy S22 5G" />
         <classes>
             <class name="AndroidApp" />
         </classes>
     </test>
 
         <test name="AndroidAppTest_4">
-        <parameter name="version" value="11" />
+        <parameter name="version" value="12" />
         <parameter name="platform" value="Android" />
-        <parameter name="device" value="Galaxy S20" />
+        <parameter name="device" value="Pixel 5" />
         <classes>
             <class name="AndroidApp" />
         </classes>
@@ -41,7 +41,7 @@
         <test name="AndroidAppTest_5">
         <parameter name="version" value="12" />
         <parameter name="platform" value="Android" />
-        <parameter name="device" value="Galaxy S21 5G" />
+        <parameter name="device" value="Galaxy S22 5G" />
         <classes>
             <class name="AndroidApp" />
         </classes>

@@ -1,14 +1,6 @@
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileBy;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
-import java.net.URL;
-import java.util.List;
 
 public class AndroidApp {
 
@@ -22,7 +14,7 @@ public class AndroidApp {
     @Test
     @org.testng.annotations.Parameters(value = {"device", "version", "platform"})
     public void AndroidApp1(String device, String version, String platform) {
-        version = System.getProperty("platformVersion");
+        // version = System.getProperty("platformVersion");
         try {
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("build","Java TestNG Android");
