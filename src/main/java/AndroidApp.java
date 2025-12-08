@@ -1,6 +1,10 @@
+import java.net.URL;
+
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.Test;
 
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 
 public class AndroidApp {
 
@@ -12,59 +16,64 @@ public class AndroidApp {
     AppiumDriver driver;
 
     @Test
-    @org.testng.annotations.Parameters(value = {"device", "version", "platform"})
+    @org.testng.annotations.Parameters(value = { "device", "version", "platform" })
     public void AndroidApp1(String device, String version, String platform) {
         // version = System.getProperty("platformVersion");
         try {
             DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setCapability("build","Java TestNG Android");
-            capabilities.setCapability("name",platform+" "+device+" "+version);
+            capabilities.setCapability("build", "Java TestNG Android");
+            capabilities.setCapability("name", platform + " " + device + " " + version);
             capabilities.setCapability("deviceName", device);
-            capabilities.setCapability("platformVersion",version);
+            capabilities.setCapability("platformVersion", version);
             capabilities.setCapability("platformName", platform);
             capabilities.setCapability("isRealMobile", true);
-            //AppURL (Create from Wikipedia.apk sample in project)
-            capabilities.setCapability("app", "lt://proverbial-android"); //Enter your app url
+            // AppURL (Create from Wikipedia.apk sample in project)
+<<<<<<< HEAD
+            capabilities.setCapability("app", "lt://APP10160581671765203586346371"); // Enter your app url
+=======
+            capabilities.setCapability("app", "lt://proverbial-android"); // Enter your app url
+>>>>>>> d49319d (missing import dependencies)
             capabilities.setCapability("deviceOrientation", "PORTRAIT");
             capabilities.setCapability("console", true);
             capabilities.setCapability("network", false);
             // capabilities.setCapability("visual", true);
             capabilities.setCapability("devicelog", true);
-            //capabilities.setCapability("geoLocation", "HK");
+            // capabilities.setCapability("geoLocation", "HK");
 
             String hub = "https://" + userName + ":" + accessKey + gridURL;
             driver = new AppiumDriver(new URL(hub), capabilities);
 
             MobileElement color = (MobileElement) driver.findElementById("com.lambdatest.proverbial:id/color");
-            //Changes color to pink
+            // Changes color to pink
             color.click();
             Thread.sleep(1000);
-            //Back to orginal color
+            // Back to orginal color
             color.click();
 
             MobileElement text = (MobileElement) driver.findElementById("com.lambdatest.proverbial:id/Text");
-            //Changes the text to "Proverbial"
+            // Changes the text to "Proverbial"
             text.click();
 
-            //toast will be visible
+            // toast will be visible
             MobileElement toast = (MobileElement) driver.findElementById("com.lambdatest.proverbial:id/toast");
             toast.click();
 
-            //notification will be visible
-            MobileElement notification = (MobileElement) driver.findElementById("com.lambdatest.proverbial:id/notification");
+            // notification will be visible
+            MobileElement notification = (MobileElement) driver
+                    .findElementById("com.lambdatest.proverbial:id/notification");
             notification.click();
             Thread.sleep(2000);
 
-            //Opens the geolocation page
+            // Opens the geolocation page
             MobileElement geo = (MobileElement) driver.findElementById("com.lambdatest.proverbial:id/geoLocation");
             geo.click();
             Thread.sleep(5000);
 
-            //takes back to home page
+            // takes back to home page
             MobileElement home = (MobileElement) driver.findElementByAccessibilityId("Home");
             home.click();
 
-            //Takes to speed test page
+            // Takes to speed test page
             MobileElement speedtest = (MobileElement) driver.findElementById("com.lambdatest.proverbial:id/speedTest");
             speedtest.click();
             Thread.sleep(5000);
@@ -72,7 +81,7 @@ public class AndroidApp {
             MobileElement Home = (MobileElement) driver.findElementByAccessibilityId("Home");
             Home.click();
 
-            //Opens the browser
+            // Opens the browser
             MobileElement browser = (MobileElement) driver.findElementByAccessibilityId("Browser");
             browser.click();
 
@@ -86,13 +95,12 @@ public class AndroidApp {
 
         } catch (Exception e) {
             e.printStackTrace();
-            try{
+            try {
                 driver.quit();
-            }catch(Exception e1){
+            } catch (Exception e1) {
                 e.printStackTrace();
             }
         }
-
 
     }
 }
