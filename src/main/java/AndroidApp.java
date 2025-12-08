@@ -27,12 +27,8 @@ public class AndroidApp {
             capabilities.setCapability("platformVersion", version);
             capabilities.setCapability("platformName", platform);
             capabilities.setCapability("isRealMobile", true);
-            // AppURL (Create from Wikipedia.apk sample in project)
-<<<<<<< HEAD
-            capabilities.setCapability("app", "lt://APP10160581671765203586346371"); // Enter your app url
-=======
+            // AppURL (Create from Wikipedia.apk sample in project) Enter your app url
             capabilities.setCapability("app", "lt://proverbial-android"); // Enter your app url
->>>>>>> d49319d (missing import dependencies)
             capabilities.setCapability("deviceOrientation", "PORTRAIT");
             capabilities.setCapability("console", true);
             capabilities.setCapability("network", false);
