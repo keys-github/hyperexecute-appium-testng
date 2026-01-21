@@ -1,0 +1,29 @@
+version: 0.2
+globalTimeout: 150
+testSuiteTimeout: 150
+testSuiteStep: 150
+
+runson: android
+
+concurrency: 5
+
+autosplit: true
+
+runtime:
+  - language: java
+    version: "8"
+
+retryOnFailure: false  
+maxRetries: 1   
+
+pre:
+  - mvn dependency:resolve
+
+appium: true
+framework:
+  name: maven/testng
+  defaultReports: false
+  discoveryType: xmltest
+  flags: ["-Pandroid-single-realdevice"]
+
+jobLabel: ['HYP-RD', 'Android', 'Single Device']

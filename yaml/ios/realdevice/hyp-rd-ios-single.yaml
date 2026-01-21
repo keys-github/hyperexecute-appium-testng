@@ -1,0 +1,35 @@
+version: 0.2
+globalTimeout: 150
+testSuiteTimeout: 150
+testSuiteStep: 150
+
+runson: ios
+
+concurrency: 2
+
+autosplit: true
+
+retryOnFailure: false
+maxRetries: 1
+
+runtime:
+  - language: java
+    version: "8"
+
+pre:
+  - mvn dependency:resolve
+
+appium: true
+framework:
+  name: maven/testng
+  defaultReports: false
+  discoveryType: xmltest
+  flags: ["-Pios-single-realdevice"]
+
+jobLabel: ['HYP-RD', 'iOS', 'Single Device']
+
+uploadArtefacts:
+
+  - name: FinalReport 
+    path:
+    - target/**

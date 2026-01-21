@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="100" name="Mobile" parallel="tests">
+
+    <test name="iOSApp_1">
+        <parameter name="platformVersion" value="16" />
+        <parameter name="os" value="iOS" />
+        <parameter name="deviceName" value="iPhone 14" />
+        <classes>
+            <class name="IosSimulator" />
+        </classes>
+    </test>
+
+    <test name="iOSApp_2">
+        <parameter name="platformVersion" value="15" />
+        <parameter name="os" value="iOS" />
+        <parameter name="deviceName" value="iPhone 13" />
+        <classes>
+           <class name="IosSimulator" />
+        </classes>
+    </test>
+
+   
+</suite>

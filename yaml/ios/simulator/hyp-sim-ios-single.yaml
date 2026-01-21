@@ -1,0 +1,30 @@
+version: 0.2
+globalTimeout: 150
+testSuiteTimeout: 150
+testSuiteStep: 150
+runson: ios
+concurrency: 2
+autosplit: true
+retryOnFailure: false
+maxRetries: 1
+runtime:
+    - language: java
+      version: "8"
+pre:
+    - mvn dependency:resolve
+    - |
+      APP_ID=$(curl -s -u "$LT_USERNAME:$LT_ACCESS_KEY" \
+        -X POST "https://manual-api.lambdatest.com/app/upload/virtualDevice" \
+        -F "name=MyApp" -F "appFile=@Proverbial_ios.zip" \
+        | grep -o '"app_id":"[^"]*"' | cut -d '"' -f 4)
+
+      echo "LT_APP_ID=$APP_ID" > app_env.sh
+    - source app_env.sh
+    - printenv
+appium: true
+framework:
+    name: maven/testng
+    defaultReports: false
+    discoveryType: xmltest
+    flags: ["-Pios-single-simulator"]
+jobLabel: ['HYP', 'iOS-Simulator', 'Single']

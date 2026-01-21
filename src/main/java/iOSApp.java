@@ -29,7 +29,7 @@ public class iOSApp {
             capabilities.setCapability("platformVersion", version);
             capabilities.setCapability("platformName", platform);
             capabilities.setCapability("isRealMobile", true);
-            capabilities.setCapability("app", "lt://proverbial-ios"); // Enter your app url
+            capabilities.setCapability("app", "lt://proverbial-ios");
             capabilities.setCapability("deviceOrientation", "PORTRAIT");
             capabilities.setCapability("console", true);
             capabilities.setCapability("network", false);
@@ -82,12 +82,19 @@ public class iOSApp {
             Wait.until(ExpectedConditions.presenceOfElementLocated(MobileBy.AccessibilityId("find"))).click();
             Thread.sleep(1000);
 
+            // Mark test as passed
+            driver.executeScript("lambda-status=passed");
+
             driver.quit();
 
         } catch (Exception e) {
             e.printStackTrace();
             try {
-                driver.quit();
+            if (driver != null) {
+            // Mark test as failed
+            driver.executeScript("lambda-status=failed");
+            driver.quit();
+        }
             } catch (Exception e1) {
                 e.printStackTrace();
             }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="100" name="Mobile" parallel="tests">
+
+    <test name="AndroidEmulatorTest_1">
+        <parameter name="platformVersion" value="11" />
+        <parameter name="os" value="Android" />
+        <parameter name="deviceName" value="Galaxy S21 5G" />
+        <classes>
+            <class name="AndroidEmulator" />
+        </classes>
+    </test>
+
+    <test name="AndroidEmulatorTest_2">
+        <parameter name="platformVersion" value="12" />
+        <parameter name="os" value="Android" />
+        <parameter name="deviceName" value="Galaxy S22 5G" />
+        <classes>
+            <class name="AndroidEmulator" />
+        </classes>
+    </test>
+
+      
+</suite>

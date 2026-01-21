@@ -1,131 +1,228 @@
-<img height="100" alt="hyperexecute_logo" src="https://user-images.githubusercontent.com/1688653/159473714-384e60ba-d830-435e-a33f-730df3c3ebc6.png">
+# HyperExecute Mobile Appium Testing Guide
+
+<img height="80" alt="hyperexecute_logo" src="https://user-images.githubusercontent.com/1688653/159473714-384e60ba-d830-435e-a33f-730df3c3ebc6.png">
 
 HyperExecute is a smart test orchestration platform to run end-to-end tests at the fastest speed possible. HyperExecute lets you achieve an accelerated time to market by providing a test infrastructure that offers optimal speed, test orchestration, and detailed execution logs.
 
 The overall experience helps teams test code and fix issues at a much faster pace. HyperExecute is configured using a YAML file. Instead of moving the Hub close to you, HyperExecute brings the test scripts close to the Hub!
 
-* <b>HyperExecute HomePage</b>: https://www.lambdatest.com/hyperexecute
-* <b>Lambdatest HomePage</b>: https://www.lambdatest.com
-* <b>LambdaTest Support</b>: [support@lambdatest.com](mailto:support@lambdatest.com)
+* **HyperExecute HomePage**: https://www.lambdatest.com/hyperexecute
+* **LambdaTest HomePage**: https://www.lambdatest.com
+* **LambdaTest Support**: support@lambdatest.com
 
-To know more about how HyperExecute does intelligent Test Orchestration, do check out [HyperExecute Getting Started Guide](https://www.lambdatest.com/support/docs/getting-started-with-hyperexecute/)
+To know more about how HyperExecute does intelligent Test Orchestration, check out [HyperExecute Getting Started Guide](https://www.lambdatest.com/support/docs/getting-started-with-hyperexecute/)
 
-[<img alt="Try it now" width="200 px" align="center" src="images/Try it Now.svg" />](https://hyperexecute.lambdatest.com/hyperexecute/jobs)
+---
 
-# Steps to run Real Device Appium tests using HyperExecute
+## Quick Navigation
 
-* [Pre-requisites](#pre-requisites)
-   - [Download HyperExecute CLI](#download-hyperexecute-cli)
-   - [Setup Environment Variables](#setup-environment-variable)
-* [Step 1: Upload your Application](#step-1-upload-your-application)
-* [Step 2: Configure your Test](#step-2-configure-your-test)
-* [Step 3: Define your YAML file](#step-3-define-your-yaml-file)
-* [Step 4: Trigger your Test](#step-4-trigger-your-test)
+- [Pre-requisites](#pre-requisites)
+- [Step 1: Download HyperExecute CLI](#step-1-download-hyperexecute-cli)
+- [Step 2: Choose Your Test Configuration](#step-2-choose-your-test-configuration)
+- [Step 3: Run Your Tests](#step-3-run-your-tests)
+- [Project Structure](#project-structure)
+- [Understanding YAML Configuration](#understanding-yaml-configuration)
 
-# Pre-requisites
+---
 
-- HyperExecute YAML file which contains all the necessary instructions.
-- HyperExecute CLI to initiate a test execution Job.
-- Your LambdaTest Username and Access Key
-- Setup the Environmental Variable
-- Ensure you have Appium’s Java client library installed.
-- Access to the Android app (.apk or .aab file) or an iOS app (.ipa file).
+## Pre-requisites
 
-## Download HyperExecute CLI
+Before you start, you need:
 
-HyperExecute CLI is the CLI for interacting and running the tests on the HyperExecute Grid. The CLI provides a host of other useful features that accelerate test execution. In order to trigger tests using the CLI, you need to download the HyperExecute CLI binary corresponding to the platform (or OS) from where the tests are triggered:
+1. **Download HyperExecute CLI** for your operating system
+2. **Grant execute permission** (macOS and Linux only):
+   ```bash
+   chmod +x ./hyperexecute
+   ```
 
-Also, it is recommended to download the binary in the project's parent directory. Shown below is the location from where you can download the HyperExecute CLI binary:
+---
 
-| Platform	| HyperExecute CLI download URL |
-|-----------|-------------------------------|
-| Windows | https://downloads.lambdatest.com/hyperexecute/windows/hyperexecute.exe |
-| macOS | https://downloads.lambdatest.com/hyperexecute/darwin/hyperexecute |
-| Linux | https://downloads.lambdatest.com/hyperexecute/linux/hyperexecute |
+## Step 1: Download HyperExecute CLI
 
-## Setup Environment Variable
-Export the environment variables *LT_USERNAME* and *LT_ACCESS_KEY* that are available in the [LambdaTest Profile page](https://accounts.lambdatest.com/detail/profile).
-Run the below mentioned commands in the terminal to setup the CLI and the environment variables.
+The HyperExecute CLI is a tool that runs your tests on the LambdaTest infrastructure. Download the version matching your operating system and save it in your project's root directory (parent folder where the `yaml` folder is located).
 
-For Linux / macOS:
+| Operating System | Download Link |
+|---|---|
+| **Windows** | https://downloads.lambdatest.com/hyperexecute/windows/hyperexecute.exe |
+| **macOS** | https://downloads.lambdatest.com/hyperexecute/darwin/hyperexecute |
+| **Linux** | https://downloads.lambdatest.com/hyperexecute/linux/hyperexecute |
 
-```bash
-export LT_USERNAME=YOUR_LT_USERNAME
-export LT_ACCESS_KEY=YOUR_LT_ACCESS_KEY
-```
+### Grant Execute Permission (macOS and Linux only)
 
-For Windows:
+After downloading, open your terminal and navigate to your project's root directory, then run:
 
 ```bash
-set LT_USERNAME=YOUR_LT_USERNAME
-set LT_ACCESS_KEY=YOUR_LT_ACCESS_KEY
+chmod +x ./hyperexecute
 ```
 
-## Step 1: Upload your Application
-Upload your Android or iOS application (.apk or .ipa file) to the LambdaTest servers using our REST API. You need to provide your Username and AccessKey in the format Username:AccessKey in the cURL command for authentication.
+This command gives the file permission to execute.
+
+**For macOS users:** If you see a security popup, allow it by going to **System Preferences → Security & Privacy → General tab** and clicking "Allow".
+
+---
+
+## Step 2: Choose Your Test Configuration
+
+This project has YAML configuration files organized by platform and device type. Select the one that matches your testing needs:
+
+### Android Testing
+
+**Android Emulator:**
+- Single Device: `yaml/android/emulator/hyp-emulator-android-single.yaml`
+- Multiple Devices (Parallel): `yaml/android/emulator/hyp-emulator-android-multiple.yaml`
+
+**Android Real Device:**
+- Single Device: `yaml/android/realdevice/hyp-rd-android-single.yaml`
+- Multiple Devices (Parallel): `yaml/android/realdevice/hyp-rd-android-multiple.yaml`
+
+### iOS Testing
+
+**iOS Simulator:**
+- Single Device: `yaml/ios/simulator/hyp-sim-ios-single.yaml`
+
+**iOS Real Device:**
+- Single Device: `yaml/ios/realdevice/hyp-rd-ios-single.yaml`
+- Multiple Devices (Parallel): `yaml/ios/realdevice/hyp-rd-ios-multiple.yaml`
+
+### Next Steps After Selecting Your YAML File:
+
+1. Open the chosen YAML file in a text editor
+2. Find the `app:` field and replace it with your App URL from Step 3 (the `lt://APP...` value)
+3. Update any device names or specifications if needed for your testing scenario
+4. Save the file
+
+---
+
+## Step 3: Run Your Tests
+
+Open your terminal, navigate to your project's root directory, and run the appropriate command based on how you set up your environment variables.
+
+### Option A: If You Set Environment Variables (Recommended)
 
 ```bash
-curl -u "USERNAME:ACCESS_KEY" -X POST "https://manual-api.lambdatest.com/app/upload/realDevice" -F "appFile=@"<YOUR_LOCAL_APP_PATH>"" -F "name="sampleApp""
+./hyperexecute --config yaml/android/realdevice/hyp-rd-android-single.yaml
 ```
 
-## Step 2: Configure your Test
-After running the above cURL command, you will receive an `AppURL` of the format `lt://APP123456789123456789` which you will update in your test scripts. Create a `.xml` file to run your test and define device capabilities.
+Replace the path with your chosen YAML file.
 
-## Step 3: Define your YAML file
+### Option B: If You Want to Specify Credentials in Command
+
+```bash
+./hyperexecute --user YOUR_USERNAME --key YOUR_ACCESS_KEY --config yaml/android/realdevice/hyp-rd-android-single.yaml
+```
+
+Replace `YOUR_USERNAME` and `YOUR_ACCESS_KEY` with your credentials, and update the YAML path as needed.
+
+### What Happens Next
+
+- HyperExecute will start executing your tests on LambdaTest's infrastructure
+- You'll see real-time logs in your terminal showing test progress
+- After completion, you'll get a summary of passed/failed tests
+- Detailed execution logs are available in your LambdaTest dashboard
+
+---
+
+## Project Structure
+
+Here's how your project is organized:
+
+```
+project-root/
+├── hyperexecute                    (CLI tool you downloaded)
+├── yaml/
+│   ├── android/
+│   │   ├── emulator/
+│   │   │   ├── hyp-emulator-android-single.yaml
+│   │   │   └── hyp-emulator-android-multiple.yaml
+│   │   └── realdevice/
+│   │       ├── hyp-rd-android-single.yaml
+│   │       └── hyp-rd-android-multiple.yaml
+│   └── ios/
+│       ├── simulator/
+│       │   └── hyp-sim-ios-single.yaml
+│       └── realdevice/
+│           ├── hyp-rd-ios-single.yaml
+│           └── hyp-rd-ios-multiple.yaml
+├── src/                            (Your test code)
+├── pom.xml                         (Maven configuration)
+└── README.md
+```
+
+---
+
+## Understanding YAML Configuration
+
+Each YAML file contains test instructions. Here's what the key settings mean:
 
 ```yaml
-version: 0.2
-globalTimeout: 150
-testSuiteTimeout: 150
-testSuiteStep: 150
+version: 0.2                          # Configuration format version
+globalTimeout: 150                    # Total time limit for entire test (in seconds)
+testSuiteTimeout: 150                 # Time limit for each test suite
+testSuiteStep: 150                    # Time limit for each test step
+runson: linux                         # Operating system to run tests on
+concurrency: 5                        # Number of parallel tests (for multiple device configs)
+autosplit: true                       # Auto-distribute tests across devices
+retryOnFailure: false                 # Automatically retry failed tests
+maxRetries: 1                         # Maximum retry attempts
 
-runson: linux
-
-concurrency: 5
-
-autosplit: true
-
-retryOnFailure: false
-maxRetries: 1
-
-pre:
+pre:                                  # Commands to run before tests
   - mvn -Dmaven.repo.local=./.m2 dependency:resolve
 
-appium: true
+appium: true                          # Enable Appium framework
 framework:
-  name: maven/testng
-  defaultReports: false
-  discoveryType: xmltest
-  flags: ["-Pandroid-parallel"]
+  name: maven/testng                  # Test framework (Maven + TestNG)
+  discoveryType: xmltest              # How to discover tests
 
-jobLabel: ['HYP-RD', 'Android', 'Multiple Device']
+jobLabel: ['HYP-RD', 'Android']       # Tags for identifying your test job
 ```
 
-## Step 4: Trigger your Test
+---
 
-> Note: In the case of MacOS, if you get a permission denied warning while executing CLI, simply run `chmod u+x ./hyperexecute` to allow permission. In case you get a security popup, allow it from your System Preferences → Security & Privacy → General tab.
+## Common Issues & Solutions
 
-Run the below command in your terminal at the root folder of the project:
+**"Command not found" error:**
+- Make sure the `hyperexecute` file is in your project's root directory
+- On macOS/Linux, ensure you ran `chmod +x ./hyperexecute`
 
-```bash
-./hyperexecute --user <your_username> --key <your_access_key> --config <path_of_yaml_file>
-```
+**"Permission denied" error on macOS/Linux:**
+- Run: `chmod +x ./hyperexecute`
 
-## LambdaTest Community :busts_in_silhouette:
+**"Unauthorized" error:**
+- Double-check your username and access key are correct
+- Verify environment variables are set with `echo $LT_USERNAME`
 
-The [LambdaTest Community](https://community.lambdatest.com/) allows people to interact with tech enthusiasts. Connect, ask questions, and learn from tech-savvy people. Discuss best practises in web development, testing, and DevOps with professionals from across the globe.
+**App upload fails:**
+- Verify the file path to your app is correct
+- Check that the file format is supported (.apk, .aab, or .ipa)
 
-## Documentation & Resources :books:
-      
-If you want to learn more about the LambdaTest's features, setup, and usage, visit the [LambdaTest documentation](https://www.lambdatest.com/support/docs/). You can also find in-depth tutorials around test automation, mobile app testing, responsive testing, manual testing on [LambdaTest Blog](https://www.lambdatest.com/blog/) and [LambdaTest Learning Hub](https://www.lambdatest.com/learning-hub/).     
-      
- ## About LambdaTest
+**Tests don't start:**
+- Ensure the App URL in your YAML is the one from Step 3
+- Verify the YAML file path in your command is correct
+- Check that your test code and configuration files exist
 
-[LambdaTest](https://www.lambdatest.com) is a leading test execution and orchestration platform that is fast, reliable, scalable, and secure. It allows users to run both manual and automated testing of web and mobile apps across 3000+ different browsers, operating systems, and real device combinations. Using LambdaTest, businesses can ensure quicker developer feedback and hence achieve faster go to market. Over 500 enterprises and 1 Million + users across 130+ countries rely on LambdaTest for their testing needs.
+---
 
-[<img height="70" src="https://user-images.githubusercontent.com/70570645/169649126-ed61f6de-49b5-4593-80cf-3391ca40d665.PNG">](https://accounts.lambdatest.com/register)
-      
-## We are here to help you :headphones:
+## Documentation & Resources
 
-* Got a query? we are available 24x7 to help. [Contact Us](mailto:support@lambdatest.com)
-* For more info, visit - https://www.lambdatest.com
+For more information, visit:
+
+- [LambdaTest Documentation](https://www.lambdatest.com/support/docs/)
+- [LambdaTest Blog](https://www.lambdatest.com/blog/)
+- [LambdaTest Learning Hub](https://www.lambdatest.com/learning-hub/)
+- [LambdaTest Community](https://community.lambdatest.com/)
+
+---
+
+## About LambdaTest
+
+[LambdaTest](https://www.lambdatest.com) is a leading test execution and orchestration platform that is fast, reliable, scalable, and secure. It allows users to run both manual and automated testing of web and mobile apps across 3000+ different browsers, operating systems, and real device combinations. Over 500 enterprises and 1 Million+ users across 130+ countries rely on LambdaTest for their testing needs.
+
+---
+
+## Support
+
+We're available 24/7 to help!
+
+- **Email**: support@lambdatest.com
+- **Website**: https://www.lambdatest.com
+- **Community**: https://community.lambdatest.com/
