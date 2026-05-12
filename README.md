@@ -1,4 +1,4 @@
-# HyperExecute Mobile Appium Testing Guide
+# HyperExecute Mobile Appium Testing Guide — TestMu AI (Formerly LambdaTest)
 
 <img height="80" alt="hyperexecute_logo" src="https://user-images.githubusercontent.com/1688653/159473714-384e60ba-d830-435e-a33f-730df3c3ebc6.png">
 
@@ -6,11 +6,11 @@ HyperExecute is a smart test orchestration platform to run end-to-end tests at t
 
 The overall experience helps teams test code and fix issues at a much faster pace. HyperExecute is configured using a YAML file. Instead of moving the Hub close to you, HyperExecute brings the test scripts close to the Hub!
 
-* **HyperExecute HomePage**: https://www.lambdatest.com/hyperexecute
-* **LambdaTest HomePage**: https://www.lambdatest.com
-* **LambdaTest Support**: support@lambdatest.com
+* **HyperExecute HomePage**: https://www.testmuai.com/hyperexecute
+* **TestMu AI HomePage**: https://www.testmuai.com
+* **TestMu AI Support**: support@testmuai.com
 
-To know more about how HyperExecute does intelligent Test Orchestration, check out [HyperExecute Getting Started Guide](https://www.lambdatest.com/support/docs/getting-started-with-hyperexecute/)
+To know more about how HyperExecute does intelligent Test Orchestration, check out [HyperExecute Getting Started Guide](https://www.testmuai.com/support/docs/getting-started-with-hyperexecute/)
 
 ---
 
@@ -39,7 +39,7 @@ Before you start, you need:
 
 ## Step 1: Download HyperExecute CLI
 
-The HyperExecute CLI is a tool that runs your tests on the LambdaTest infrastructure. Download the version matching your operating system and save it in your project's root directory (parent folder where the `yaml` folder is located).
+The HyperExecute CLI is a tool that runs your tests on the TestMu AI infrastructure. Download the version matching your operating system and save it in your project's root directory (parent folder where the `yaml` folder is located).
 
 | Operating System | Download Link |
 |---|---|
@@ -115,10 +115,10 @@ Replace `YOUR_USERNAME` and `YOUR_ACCESS_KEY` with your credentials, and update 
 
 ### What Happens Next
 
-- HyperExecute will start executing your tests on LambdaTest's infrastructure
+- HyperExecute will start executing your tests on TestMu AI's infrastructure
 - You'll see real-time logs in your terminal showing test progress
 - After completion, you'll get a summary of passed/failed tests
-- Detailed execution logs are available in your LambdaTest dashboard
+- Detailed execution logs are available in your TestMu AI dashboard
 
 ---
 
@@ -206,23 +206,28 @@ jobLabel: ['HYP-RD', 'Android']       # Tags for identifying your test job
 
 For more information, visit:
 
-- [LambdaTest Documentation](https://www.lambdatest.com/support/docs/)
-- [LambdaTest Blog](https://www.lambdatest.com/blog/)
-- [LambdaTest Learning Hub](https://www.lambdatest.com/learning-hub/)
-- [LambdaTest Community](https://community.lambdatest.com/)
+- [TestMu AI Documentation](https://www.testmuai.com/support/docs/)
+- [TestMu AI Blog](https://www.testmuai.com/blog/)
+- [TestMu AI Learning Hub](https://www.testmuai.com/learning-hub/)
+- [TestMu AI Community](https://community.testmuai.com/)
 
 ---
 
-## About LambdaTest
+## 🚀 [LambdaTest is Now TestMu AI](https://www.testmuai.com/lambdatest-is-now-testmuai/)
 
-[LambdaTest](https://www.lambdatest.com) is a leading test execution and orchestration platform that is fast, reliable, scalable, and secure. It allows users to run both manual and automated testing of web and mobile apps across 3000+ different browsers, operating systems, and real device combinations. Over 500 enterprises and 1 Million+ users across 130+ countries rely on LambdaTest for their testing needs.
+👋 Welcome to TestMu AI, the next evolution of LambdaTest. As of January 2026, LambdaTest has officially rebranded to TestMu AI. We have evolved from a cross-browser testing cloud into a unified, AI-native quality engineering platform designed for the modern DevOps era.
 
----
+Whether you have been part of the LambdaTest community for years or are just discovering TestMu AI, our mission remains the same: to help you ship faster with high-scale test execution, autonomous testing, and deep quality analytics.
 
-## Support
+**🔄 Our Rebrand Journey**
 
-We're available 24/7 to help!
+We chose the name TestMu AI to reflect our shift towards intelligent, autonomous testing. While our identity has changed, our core technology and commitment to the testing community stay the same.
 
-- **Email**: support@lambdatest.com
-- **Website**: https://www.lambdatest.com
-- **Community**: https://community.lambdatest.com/
+**✨ Specialties**
+
+- 🤖 AI-Native Test Execution (Formerly LambdaTest)
+- ⚡ Autonomous Test Automation
+- 🌐 Cross-Browser & Mobile Testing
+- 📊 Unified Quality Intelligence
+
+👉 Find [LambdaTest's New Home](https://www.testmuai.com/).
