@@ -1,4 +1,4 @@
-﻿# Run Appium TestNG Tests with HyperExecute on TestMu AI (Formerly LambdaTest)
+# Run Real Device Appium TestNG Tests with HyperExecute on TestMu AI (Formerly LambdaTest)
 
 <p align="center">
   <a href="https://www.testmuai.com/"><img src="https://img.shields.io/badge/MADE%20BY%20TestMu%20AI-000000.svg?style=for-the-badge&labelColor=000" alt="Made by TestMu AI"></a>
@@ -10,7 +10,7 @@
 
 [TestMu AI](https://www.testmuai.com/) (Formerly LambdaTest) is the world's first full-stack AI Agentic Quality Engineering platform that empowers teams to test intelligently, smarter, and ship faster. Built for scale, it offers a full-stack testing cloud with 10K+ real devices and 3,000+ browsers. With AI-native test management, MCP servers, and agent-based automation, TestMu AI supports Selenium, Appium, Playwright, and all major frameworks. 
 
-With TestMu AI (Formerly LambdaTest), you can run Appium TestNG mobile tests using HyperExecute. This sample shows how to configure Appium + TestNG + HyperExecute to run on the TestMu AI cloud.
+With TestMu AI (Formerly LambdaTest), you can run Appium TestNG tests on real devices using HyperExecute. This sample shows how to configure Appium + TestNG + Real Devices + HyperExecute to run on the TestMu AI cloud.
 
 - [Sign up on TestMu AI](https://www.testmuai.com/register/) (Formerly LambdaTest).
 - Follow the [TestMu AI Documentation](https://www.testmuai.com/support/docs/) for the full setup walkthrough.
@@ -27,7 +27,7 @@ With TestMu AI (Formerly LambdaTest), you can run Appium TestNG mobile tests usi
 Clone and install dependencies:
 
 ```bash
-git clone https://github.com/LambdaTest/hyperexecute-appium-testng && cd hyperexecute-appium-testng
+git clone https://github.com/LambdaTest/hyperexecute-real-device-appium-testng && cd hyperexecute-real-device-appium-testng
 chmod +x ./hyperexecute
 ```
 
@@ -51,7 +51,7 @@ set LT_TUNNEL="YOUR_TUNNEL_NAME"
 
 ### Run tests
 
-```
+```bash
 ./hyperexecute --user YOUR_USERNAME --key YOUR_ACCESS_KEY --config yaml/hyperexecute.yaml
 ```
 
